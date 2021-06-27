@@ -19,7 +19,7 @@ public class LightController {
     }
 
     @RequestMapping(value = "/433/{groupID}/{action}", method = RequestMethod.GET)
-    public int switchOn(@PathVariable int groupID, @PathVariable String action) throws IOException, InterruptedException, SignalNotSendException, ProgramNotFoundException {
+    public int switchAction(@PathVariable int groupID, @PathVariable String action) throws IOException, InterruptedException, SignalNotSendException, ProgramNotFoundException {
         int code = commandLineService.execute433Control(groupID, action);
         if (code == 0) {
             return code;

@@ -3,8 +3,7 @@
 #include <stdio.h>
 #include <string>
 
-class LightGroup433
-{
+class LightGroup433 {
 public:
     int id;
     int on;
@@ -16,8 +15,7 @@ public:
     int lightDarker;
 };
 
-int main(int argc, char *argv[])
-{
+int main(int argc, char *argv[]) {
     int PIN = 0;
 
     LightGroup433 group1;
@@ -59,50 +57,34 @@ int main(int argc, char *argv[])
     mySwitch.enableTransmit(PIN);
 
     // Gruppe wählen
-    if (atoi(argv[1]) == 1)
-    {
+    if (atoi(argv[1]) == 1) {
         selectedGroup = group1;
-    }
-    else if (atoi(argv[1]) == 2)
-    {
+    } else if (atoi(argv[1]) == 2) {
         selectedGroup = group2;
-    }
-    else
-    {
+    } else if (atoi(argv[1]) == 3) {
         selectedGroup = group3;
+    } else {
+        return 0;
     }
 
     // Optionen
-    if (argv[2] == std::string("on"))
-    {
+    if (argv[2] == std::string("on")) {
         mySwitch.send(selectedGroup.on, 24);
-    }
-    else if (argv[2] == std::string("off"))
-    {
+    } else if (argv[2] == std::string("off")) {
         mySwitch.send(selectedGroup.off, 24);
-    }
-    else if (argv[2] == std::string("cold"))
-    {
+    } else if (argv[2] == std::string("cold")) {
         mySwitch.send(selectedGroup.colorCold, 24);
-    }
-    else if (argv[2] == std::string("normal"))
-    {
+    } else if (argv[2] == std::string("normal")) {
         mySwitch.send(selectedGroup.colorNormal, 24);
-    }
-    else if (argv[2] == std::string("warm"))
-    {
+    } else if (argv[2] == std::string("warm")) {
         mySwitch.send(selectedGroup.colorWarm, 24);
-    }
-    else if (argv[2] == std::string("brighter"))
-    {
+    } else if (argv[2] == std::string("brighter")) {
         mySwitch.send(selectedGroup.lightBrighter, 24);
         mySwitch.send(selectedGroup.lightBrighter, 24);
         mySwitch.send(selectedGroup.lightBrighter, 24);
         mySwitch.send(selectedGroup.lightBrighter, 24);
         mySwitch.send(selectedGroup.lightBrighter, 24);
-    }
-    else if (argv[2] == std::string("darker"))
-    {
+    } else if (argv[2] == std::string("darker")) {
         mySwitch.send(selectedGroup.lightDarker, 24);
         mySwitch.send(selectedGroup.lightDarker, 24);
         mySwitch.send(selectedGroup.lightDarker, 24);
